@@ -99,43 +99,6 @@ class Admin:
         self.bot.add_event_handler(self.admin, events.NewMessage(pattern='/admin', forwards=False))
         self.bot.add_event_handler(self.add_file, events.NewMessage(pattern='/add', forwards=False))
         self.bot.add_event_handler(self.delete_file, events.NewMessage(pattern='/delete', forwards=False))
-        self.bot.add_event_handler(self.self_report, events.NewMessage(pattern='/selfreport', forwards=False))
-        self.bot.add_event_handler(self.report, events.NewMessage(pattern='/report', forwards=False))
-
-    async def report(self, event):
-        bot = self.bot
-        user = event.sender_id
-        message2 = 'Do you think you medical services like ambulance are required?'
-        keyboard = [[Button.inline('Yes')],
-                    [Button.inline('No')]]
-        async with bot.conversation(user) as conv:
-            await bot.send_message(user, message2, parse_mode='html', buttons=keyboard)
-            query = await conv.wait_event(events.CallbackQuery(user))
-            # option = (query.data).decode('utf-8')
-            # await query.delete()
-            # option = (query.data).decode('utf-8')
-            # await query.delete()
-
-
-    async def self_report(self, event):
-        bot = self.bot
-        user = event.sender_id
-        keyboard = [[Button.inline('I think I am an asymptomatic contact')],
-                    [Button.inline('I have symptoms')]]
-        keyboard2 = [[Button.inline('Person 1', data='EDITA')],
-                    [Button.inline('Person 2', data='EDITT')],
-                    [Button.inline('Person 3', data='JOIN')]]
-        message2 = 'Okayy, you think you could be a contact. Who did you come in contact with?'
-        message = 'Do you think or know you are Covid positive?'
-        async with bot.conversation(user) as conv:
-            await bot.send_message(user, message, parse_mode='html', buttons=keyboard)
-            query = await conv.wait_event(events.CallbackQuery(user))
-            # option = (query.data).decode('utf-8')
-            # await query.delete()
-            await bot.send_message(user, message2, parse_mode='html', buttons=keyboard2)
-            query = await conv.wait_event(events.CallbackQuery(user))
-            # option = (query.data).decode('utf-8')
-            # await query.delete()
 
 
     async def admin(self, event):
