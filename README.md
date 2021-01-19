@@ -5,7 +5,6 @@ mycrowbot is a Telegram bot to store, organize and access any media resource suc
 ### Features
 
 #### Student
-<br/>
 1. Access class resources through a menu-driven directory system.<br/>
 2. Access class timetables/schedules for your college.<br/>
 3. Track your attendance (if timetable is added by the admins).<br/>
